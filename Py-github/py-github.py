@@ -29,13 +29,13 @@ def getmyRepos():
 
 def getRepoTopic(repository="PyGithub/PyGithub"):
     repo = g.get_repo(repository)
-    repo.get_topics()
+    print(repo.get_topics())
 
 
 def getStar(repository="PyGithub/PyGithub"):
     # get count of stars
     repo = g.get_repo(repository)
-    repo.stargazers_count
+    print(repo.stargazers_count)
 
 
 def openIssue(repository="PyGithub/PyGithub"):
@@ -118,17 +118,17 @@ def getbranch(repository="PyGithub/PyGithub"):
     repo.get_branch(branch="master")
 
 
-def getheadcomm(repository="dev-manojm/jenkins-connect-exapmle"):
+def getheadcomm(repository="PyGithub/PyGithub"):
     # Get HEAD commit of a branch
     branch = g.get_repo(repository).get_branch("master")
     result = branch.commit
     print(result)
 
 
-def statuscheck(repository="dev-manojm/jenkins-connect-exapmle"):
+def statuscheck(repository="PyGithub/PyGithub"):
     # See required status checks of a branch
     branch = g.get_repo(repository).get_branch("master")
-    branch.get_required_status_checks()
+    print(branch.get_required_status_checks())
 
 
 def createcommstatus(repository="PyGithub/PyGithub"):
