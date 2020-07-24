@@ -10,6 +10,7 @@ import datetime
 ## Configuration
 
 baseURL = "https://your-domain.atlassian.com/rest/"
+#baseURL = "https://jira-project.atlassian.com/rest/"
 
 createissueAPI = "api/2/issue/"
 dashboardAPI = "api/2/dashboard"
@@ -114,7 +115,7 @@ def getdashboard ():
    print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
    return
 
-## Get single dashboard by id
+## Get single dashboard by id 
 
 def getdashboardbyId ():
    url = baseURL + dashboardAPI +"/10002"
@@ -173,7 +174,7 @@ def deletedash():
    print ("Deleted Successfully !!!")
    return
 
-## Create issue
+## Create issue 
 
 def createissue(sum , desc ):
    url = baseURL + createissueAPI
@@ -185,7 +186,7 @@ def createissue(sum , desc ):
    payload = json.dumps( {
       "fields": {
          "project":
-         {
+         { 
             "key" : "CJ"
          },
          "summary": sum,
@@ -246,7 +247,7 @@ def getissuemeta ():
    return
 
 
-## Delete Issue by Id
+## Delete Issue by Id 
 
 def deleteissuebyID ():
    url = baseURL + createissueAPI + "/10004"
@@ -281,7 +282,7 @@ def getprojects ():
    return
 
 
-#Call above functions to performs tasks
+#Call above functions using the 
 
 #createuser (password ="abcd" , email ="abcd@xyz.com", name = "Mr AB")
 #getuserbyId (Id = "557058:84f7ce7c-91a6-4ad0-b420-4ea26758341d" )
@@ -297,28 +298,36 @@ def getprojects ():
 # getprojects()
 
 
-def call(i):
-    switcher={
-         0: createuser (password ="abcd" , email ="abcd@xyz.com", name = "Mr AB"),
-         1: getuserbyId (Id = "557058:84f7ce7c-91a6-4ad0-b420-4ea26758341d" ),
-         2: creategroup (gname = "My Group"),
-         3: getdashboard (),
-         4: getdashboardbyId (),
-         5: createdashboard(dname = "Dashboard" , desc="checking whether working or not"),
-         6: deletedash(),
-         7: createissue (sum = "issue" , desc = " checking whether works"),
-         8: getissuebyId(),
-         9: getissuemeta(),
-         10: deleteissuebyID(),
-         11: getprojects()
-    }
-    return switcher.get(i,"Invalid input")
-
 print (" 0: To Create User\n\n 1: To get user by Id\n\n 2: Create a group  \n\n 3: Get all dashboards ")
 print ("\n 4: Get dashboard by Id \n\n 5: Create Dashboard \n\n 6: Delete Dashboard by Id \n\n 7: Create issue ")
 print ("\n 8: Get issue by Id \n\n 9: Get issues\n\n 10: Delete issue by Id \n\n11: Get all projects")
-# val = input("\nEnter your value: ")
-# val = int(val)
 
-call(2)
+x = input ("Please enter your Choice: ")
+x= int(x)
+if x == 0:
+   createuser (password ="amazo" , email ="amazon@aws.com", name = "Mr BOBO")
+elif x == 1:
+   getuserbyId (Id = "557058:84f7ce7c-91a6-4ad0-b420-4ea26758341d" )
+elif x == 2:
+   creategroup (gname = "My Group")
+elif x == 3:
+   getdashboard ()
+elif x == 4:
+   getdashboardbyId ()
+elif x == 5:
+   createdashboard(dname = "Dashboard" , desc="checking whether working or not")
+elif x == 6:
+   deletedash()
+elif x == 7:
+   createissue (sum = "issue" , desc = " checking whether works")
+elif x == 8:
+   getissuebyId()
+elif x == 9:
+   getissuemeta()
+elif x == 10:
+   deleteissuebyID()
+elif x == 11:
+   getprojects()
+else:
+    print("wrong Choice !!!\nEnter a value in between 0 to 11")
 
